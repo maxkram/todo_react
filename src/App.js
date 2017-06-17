@@ -6,16 +6,19 @@ import {addTodo, generateId} from './lib/todoHelpers';
 
 
 class App extends Component {
+
+  state = {
+    todos: [
+      {id: 1, name: 'Разгон облаков, установление хорошей погоды', isComplete: true},
+      {id: 2, name: 'Подвиг', isComplete: false},
+      {id: 3, name: 'Война с Англией', isComplete: false}
+    ],
+    currentTodo: ''
+  }
+
   constructor(){
     super()
-    this.state = {
-      todos: [
-        {id: 1, name: 'Разгон облаков, установление хорошей погоды', isComplete: true},
-        {id: 2, name: 'Подвиг', isComplete: false},
-        {id: 3, name: 'Война с Англией', isComplete: false}
-      ],
-      currentTodo: ''
-    }
+
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleEmptySubmit = this.handleEmptySubmit.bind(this)
@@ -33,6 +36,7 @@ class App extends Component {
         errorMessage:''
       })
     }
+
 
   handleEmptySubmit(evt) {
     evt.preventDefault()
